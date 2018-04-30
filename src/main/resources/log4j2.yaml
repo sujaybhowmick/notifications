@@ -1,0 +1,57 @@
+Configutation:
+  name: Default
+  Properties:
+    Property:
+      name: log-path
+      value: "/var/tmp/logs"
+  Appenders:
+    Console:
+      name: Console_Appender
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5level} %magenta{[%t]} %cyan{%c{1.}}: - %msg%n"
+    RollingFile:
+      name: Info_RollingFile_Appender
+      fileName: ${sys:log-path}/notifications.log
+      filePattern: "${sys:log-path}/archive/notifications.log.%d{yyyy-MM-dd-hh-mm}.gz"
+      PatternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] %c{1.}: - %msg%n"
+      Policies:
+        SizeBasedTriggeringPolicy:
+          size: 20 MB
+  Loggers:
+      Root:
+        level: ERROR
+        AppenderRef:
+          ref: Console_Appender
+      Logger:
+        - name: com.sujay
+          level: DEBUG
+          AppenderRef:
+            - level: ${sys:logging.level}
+              ref: Info_RollingFile_Appender
+        - name: org.springframework
+          level: INFO
+          AppenderRef:
+            - level: INFO
+              ref: Info_RollingFile_Appender
+        - name: springfox.documentation
+          level: ERROR
+          AppenderRef:
+            - level: ERROR
+              ref: Info_RollingFile_Appender
+        - name: org.hibernate
+          level: ERROR
+          AppenderRef:
+            - level: ERROR
+              ref: Info_RollingFile_Appender
+        - name: org.eclipse.jetty
+          level: ERROR
+          AppenderRef:
+            - level: ERROR
+              ref: Info_RollingFile_Appender
+        - name: org.apache.tomcat.jdbc.pool
+          level: ERROR
+          AppenderRef:
+            - level: ERROR
+              ref: Info_RollingFile_Appender

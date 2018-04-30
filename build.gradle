@@ -26,13 +26,18 @@ repositories {
 	}
 }
 
+configurations {
+	compile.exclude module: "spring-boot-starter-logging"
+}
 
 dependencies {
-	//compile('org.springframework.cloud:spring-cloud-stream:2.0.0.RELEASE')
-	//compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit:2.0.0.RELEASE')
+	compile('org.springframework.cloud:spring-cloud-stream:2.0.0.RELEASE')
+	compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit:2.0.0.RELEASE')
 	compile('org.springframework.boot:spring-boot-starter-integration')
 	compile('org.springframework.integration:spring-integration-file')
 	compile('org.springframework.boot:spring-boot-starter-webflux')
+	compile('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml')
+	compile 'org.springframework.boot:spring-boot-starter-log4j2'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('io.projectreactor:reactor-test')
 }

@@ -1,0 +1,13 @@
+logging:
+  config: classpath:log4j2.yaml
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+#  cloud:
+#    stream:
+#      bindings:
+#        input:
+#          destination: exchg_notifications_fanout
