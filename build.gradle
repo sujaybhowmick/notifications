@@ -33,6 +33,8 @@ configurations {
 dependencies {
 	//compile('org.springframework.cloud:spring-cloud-stream:2.0.0.RELEASE')
 	//compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit:2.0.0.RELEASE')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile('org.springframework.boot:spring-boot-starter-integration')
 	compile('org.springframework.integration:spring-integration-amqp')
 	compile('org.springframework.integration:spring-integration-file')

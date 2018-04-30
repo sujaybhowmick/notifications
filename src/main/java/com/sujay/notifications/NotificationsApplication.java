@@ -59,7 +59,8 @@ public class NotificationsApplication {
 				.get();
 	}
 
-	@CrossOrigin(origins = {"https://fiddle.jshell.net", "https://codepen.io"})
+	@CrossOrigin(origins = {"https://fiddle.jshell.net", "https://codepen.io",
+	"file:///Users/sujaybhowmick/development/rnd/notifications/eventsource-demo.html"})
 	@GetMapping(value = "/notifications/{name}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	Flux<String> notifications(@PathVariable String name){
 		return Flux.create(sink -> {
